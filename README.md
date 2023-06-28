@@ -14,7 +14,7 @@ Miscellaneous projects related to DevOps
 
 ## Steps to setup docker environment:
 1. mkdir monitoring_project && cd monitoring_project
-2. Clone this repo 
+2. git clone https://github.com/Oartihsin/Devops.git
 
     Changes to be made
     File alertmanager/alertmanager/yml
