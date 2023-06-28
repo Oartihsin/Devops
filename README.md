@@ -37,3 +37,13 @@ Miscellaneous projects related to DevOps
 4. Take a new terminal tab
 5. "docker stats" -> to check CPU utilization of all containers (check node-exporter)
 
+
+## Inhibit rules verification
+1. You should receive mails for 2 alerts only
+   1. InstanceDownCritical
+   2. HostHighCpuLoad (this is for >90%)
+
+2. Alerts ignored
+   1. HostHighCpuLoad (this is for >70%)
+   
+
