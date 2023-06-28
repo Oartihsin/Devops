@@ -1,0 +1,67 @@
+version: '3'
+
+services:
+  prometheus:
+    image: prom/prometheus:v2.21.0
+    ports:
+      - 9000:9090
+    volumes:
+      - ./prometheus:/etc/prometheus
+      - prometheus-data:/prometheus
+    command: --web.enable-lifecycle  --config.file=/etc/prometheus/prometheus.yml
+
+  # blackbox:
+  #   image: prom/blackbox-exporter:latest
+  #   privileged: true
+  #   volumes:
+  #     - ./blackbox.yml:/etc/blackbox_exporter/config.yml
+  #   ports:
+  #     - '9115:9115'
+ 
+  node-exporter:
+    image: prom/node-exporter:latest
+    privileged: true
+    ports:
+      - '9100:9100'
+
+  grafana:
+     image: grafana/grafana:7.5.7
+     ports:
+       - 3000:3000
+     restart: unless-stopped
+     volumes:
+       - ./grafana/provisioning/datasources:/etc/grafana/provisioning/datasources
+       - grafana-data:/var/lib/grafana
+
+  alertmanager:
+    image: prom/alertmanager:v0.23.0
+    restart: unless-stopped
+    ports:
+      - "9093:9093"
+    volumes:
+      - "./alertmanager:/config"
+      - alertmanager-data:/data
+    command: --config.file=/config/alertmanager.yml --log.level=debug
+
+  # webserver:
+  #   build:
+  #     context: .
+  #     dockerfile: Dockerfile
+  #   ports:
+  #     - 8080:80
+  
+  # prom2teams:
+  #   image: idealista/prom2teams:2.7.0
+  #   restart: unless-stopped
+  #   environment:
+  #     PROM2TEAMS_CONNECTOR: "https://api.flock.com/hooks/sendMessage/b631c8e4-7960-455a-814f-7e2d73e24d65"
+  #   ports:
+  #     - 8089:8089
+
+volumes:
+    prometheus-data:
+    grafana-data:
+    alertmanager-data:
+
+
+
