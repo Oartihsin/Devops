@@ -16,11 +16,11 @@ Miscellaneous projects related to DevOps
 1. mkdir monitoring_project && cd monitoring_project
 2. git clone https://github.com/Oartihsin/Devops.git
 
-    Changes to be made
-    File alertmanager/alertmanager/yml
-      1. lines 3,4 -> add sender_email (Try using gmail.com emails)
-      2. line 5 -> sender_password
-      3. line 30 -> receiver_email (Try using gmail.com emails)
+    Changes to be made.
+       File alertmanager/alertmanager/yml
+         1. lines 3,4 -> add sender_email (Try using gmail.com emails)
+         2. line 5 -> sender_password
+         3. line 30 -> receiver_email (Try using gmail.com emails)
 
 
 2. run "docker-compose up -d"
