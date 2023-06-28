@@ -1,0 +1,47 @@
+global:
+  smtp_smarthost: 'smtp.gmail.com:25'
+  smtp_from: 'raonishith0@gmail.com'
+  smtp_auth_username: 'raonishith0@gmail.com'
+  smtp_auth_password: 'adpjxhaatxzgkjvg'
+  
+route:
+  group_by: [ alertname ]
+  receiver: 'mail' # default receiver
+  repeat_interval: 3m
+  group_wait: 10s
+  group_interval: 10s
+  # routes:
+  #   - receiver: 'teams'
+  #     repeat_interval: 2m
+  #     matchers:
+  #       - severity="medium"
+
+  #   - receiver: 'teams'
+  #     repeat_interval: 1m
+  #     matchers:
+  #       - severity="high"
+
+
+receivers:
+  - name: 'mail'
+    email_configs:
+      # - smarthost: 'aspmx.l.google.com:25'
+      #   require_tls: false
+      - to: 'nishitra@zeta.tech'
+
+
+  - name: 'teams'
+    webhook_configs:
+      - url: "https://api.flock.com/hooks/sendMessage/b631c8e4-7960-455a-814f-7e2d73e24d65"
+        send_resolved: true
+
+
+inhibit_rules:
+  - source_matchers: [severity="critical"]
+    target_matchers: [severity="warning"]
+    # Apply inhibition if the alertname is the same.
+    # CAUTION:
+    #   If all label names listed in `equal` are missing
+    #   from both the source and target alerts,
+    #   the inhibition rule will apply!
+    equal: [alertname]
