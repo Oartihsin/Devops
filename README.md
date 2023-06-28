@@ -25,9 +25,9 @@ Steps to setup docker environment:
 
 2. run "docker-compose up -d"
 3. Important urls :
-   a. prometheus : http://localhost:9000
-   b. grafana : http://localhost:3000
-   c. alertmanager : http://localhost:9093
+   1. prometheus : http://localhost:9000
+   2. grafana : http://localhost:3000
+   3. alertmanager : http://localhost:9093
 
 
 Steps to increase CPU utilization on node exporter container
