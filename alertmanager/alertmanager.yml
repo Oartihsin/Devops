@@ -1,8 +1,8 @@
 global:
   smtp_smarthost: 'smtp.gmail.com:25'
-  smtp_from: 'raonishith0@gmail.com'
-  smtp_auth_username: 'raonishith0@gmail.com'
-  smtp_auth_password: 'adpjxhaatxzgkjvg'
+  smtp_from: ''
+  smtp_auth_username: ''
+  smtp_auth_password: ''
   
 route:
   group_by: [ alertname ]
@@ -27,7 +27,7 @@ receivers:
     email_configs:
       # - smarthost: 'aspmx.l.google.com:25'
       #   require_tls: false
-      - to: 'nishitra@zeta.tech'
+      - to: ''
 
 
   - name: 'teams'
