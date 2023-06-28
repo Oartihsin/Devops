@@ -9,8 +9,8 @@ Miscellaneous projects related to DevOps
    
 ## Prerequisites 
 1. Install the following on your local system
-   a. docker
-   b. docker-compose
+   1. docker
+   2. docker-compose
 
 ## Steps to setup docker environment:
 1. mkdir monitoring_project && cd monitoring_project
